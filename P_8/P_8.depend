@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1697790001 source:m:\iti\into to programming c\p_8\main.c
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+
