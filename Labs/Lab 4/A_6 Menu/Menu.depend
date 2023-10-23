@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1698087412 source:c:\users\abdelrahman\desktop\menu\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<dos.h>
+	<dir.h>
+	"students.h"
+	"global_variables.h"
+	"screen.h"
+
+1698085869 source:c:\users\abdelrahman\desktop\menu\students.c
+	"students.h"
+	"global_variables.h"
+
+1698085928 c:\users\abdelrahman\desktop\menu\students.h
+
+1698087088 c:\users\abdelrahman\desktop\menu\global_variables.h
+
+1698086693 source:c:\users\abdelrahman\desktop\menu\screen.c
+	"screen.h"
+
+1698086651 c:\users\abdelrahman\desktop\menu\screen.h
+
+1698086941 source:c:\users\abdelrahman\desktop\menu\coordinates_colors.c
+	"coordinates_colors.h"
+	<windows.h>
+
+1698086890 c:\users\abdelrahman\desktop\menu\coordinates_colors.h
+

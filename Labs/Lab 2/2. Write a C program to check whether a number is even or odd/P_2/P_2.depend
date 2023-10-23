@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1697826492 source:m:\iti\into to programming c\day 2\separated lab 2\2. write a c program to check whether a number is even or odd\p_2\main.c
+	<stdio.h>
+	<stdlib.h>
+
