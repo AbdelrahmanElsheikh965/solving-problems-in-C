@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1698180658 source:m:\iti\into to programming c\day 6\lineeditor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
