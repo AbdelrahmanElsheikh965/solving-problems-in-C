@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <conio.h>
 
 #define RIGHT_ARROW 77
 #define LEFT_ARROW 75
@@ -12,54 +13,55 @@ int main()
 {
     char c;
     char text[9] = {'_', '_', '_',  '_', '_',  '_', '_', '\0'};
-    char* pointer = &text;
+    char* pointer = text;
 
     int i = 0, x = 0, y = 0;
 
     while (1)
     {
-        for(i; i < 8; i++)
+        for(i; i <= 8; i++)
         {
             gotoxy(0, i);
             printf("%c", *(pointer+i));
         }
 
         gotoxy(0, y);
-        c = getch();
 
-        if(c == -32 && getch() == RIGHT_ARROW)
-        {
-            if(y < 8)
+        if (kbhit)
+		{
+			c = getch();
+
+			if ((int)c == 77)
             {
-                gotoxy(0, y++);
+                if(y < 6)
+                {
+                    gotoxy(0, y++);
+                }else
+                {
+                    y = 0;
+                    gotoxy(0, y);
+                }
+                continue;
+            }
+            else if ((int)c == 75)
+            {
+               if(y > 0)
+                {
+                    gotoxy(0, y--);
+                }else
+                {
+                    y = 6;
+                    gotoxy(0, y);
+                }
+                continue;
             }else
             {
-                y = 0;
+//                text[y] = c;
+                *(pointer+y) = c;
             }
-        }else //if(c == -32 && getch() == LEFT_ARROW)
-        {
-           if(y > 0)
-            {
-                gotoxy(0, y--);
-            }else
-            {
-                y = 7;
-            }
-        }
-
-
-        if( (c >= 65 && c <= 90) || (c >= 97 && c <= 122) )
-        {
-            *(pointer + y) = c;
-        }
-
-        printf("%s", text);
-        if( c == 13 )
-        {
-           printf("\n%s\n", text);
-        }
-
+		}
     }
+
 }
 
 
