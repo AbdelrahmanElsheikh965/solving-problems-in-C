@@ -5,7 +5,6 @@
 
 #define RIGHT_ARROW 77
 #define LEFT_ARROW 75
-#define SIZE 10
 #define X_AXIS 0
 
 void gotoxy(int x,int y);
@@ -13,13 +12,12 @@ void gotoxy(int x,int y);
 int main()
 {
     int character;
-    char text[SIZE] = {0};
-
-    int i = 0, x = 0, y = 0;
+    int size = 0, i = 0;
+    char text[20];
 
     while (1)
     {
-        gotoxy(X_AXIS, y);
+        gotoxy(X_AXIS, i);
         character = getch();
 
 			if (character == 0xE0 || character == 0x00)
@@ -27,49 +25,54 @@ int main()
                 character = getch();
                 if(character == 77)
                 {
-                    if(y < SIZE)
+                    if(i < size-1)
                     {
-                        gotoxy(X_AXIS, y++);
+                        gotoxy(X_AXIS, ++i);
                     }else
                     {
-                        y = 0;
-                        gotoxy(X_AXIS, y);
+                        i = 0;
+                        gotoxy(X_AXIS, i);
                     }
-                }else if ( character == 75)
+                }else if (character == 75)
                 {
-                   if(y > 0)
+                   if(i > 0)
                     {
-                        gotoxy(X_AXIS, y--);
+                        gotoxy(X_AXIS, --i);
                     }else
                     {
-                        y = SIZE;
-                        gotoxy(X_AXIS, y);
+                        i = size-1;
+                        gotoxy(X_AXIS, i);
                     }
-
                 }
 			}else
 			{
 			    if (character == 8)
                 {
-                    printf("%c", text[i-1]);
-                    gotoxy(X_AXIS, y--);
-                    text[i] = text[i-1];
-                    break;
-                }
+                    if(i > 0)
+                    {
+                        gotoxy(X_AXIS, --i);
+                        for(i=i-1; i < size-1; i++)
+                        {
+                            text[i] = text[i+1];
+                        }
+                        --size;
+                    }
 
-                printf("%c", character);
-                gotoxy(X_AXIS, y++);
-                text[i++] = character;
-
-                if (character == 13)
+                }else if (character == 13)
                 {
-                    printf("\n %s", text);
+                    printf("\n%s", text);
                     break;
                 }
-
+                else
+                {
+                    printf("%c", character);
+                    gotoxy(X_AXIS, i);
+                    text[i] = character;
+                    i++;
+                    size++;
+                }
 			}
-
-		}
+      }
 }
 
 void gotoxy(int x,int y)
